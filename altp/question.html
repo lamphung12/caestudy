@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI LÀ TRIỆU PHÚ - Nhập Câu Hỏi</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Thêm Câu Hỏi Vào Bộ Đề <strong style="color: red">AI LÀ TRIỆU PHÚ</strong>
+        </div>
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="question">Cau hoi</label>
+                        <input type="text" class="form-control" id="question">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="question">lua chon a</label>
+                        <input type="text" class="form-control" id="answerA">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="question">lua chon b</label>
+                        <input type="text" class="form-control" id="answerB">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="question">lua chon c</label>
+                        <input type="text" class="form-control" id="answerC">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="question">lua chon d</label>
+                        <input type="text" class="form-control" id="answerD">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="question">dap an</label>
+                        <select class="form-control" id="answer">
+                            <option class="A">A</option>
+                            <option class="B">B</option>
+                            <option class="C">C</option>
+                            <option class="D">D</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button class="btn btn-success" onclick="saveQuestion()">Lưu Câu Hỏi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function saveQuestion() {
+        question = $('#question').val()
+        answerA = $('#answerA').val(a)
+        answerB = $('#answerB').val()
+        answerC = $('#answerC').val()
+        answerD = $('#answerD').val()
+        answer = $('#answer').val()
+
+        obj = {
+            'question': question,
+            'answerA':answerA,
+            'answerB':answerB,
+            'answerC':answerC,
+            'answerD':answerD,
+            'answer':answer
+        }
+
+        questionList = getValueByKey('questionList')
+        if(questionList == undefined) {
+            questionList = []
+        }
+        questionList.push(obj)
+        saveKeyValue('questionList', questionList)
+
+        $('#question').val('')
+        $('#answerA').val('')
+        $('#answerB').val('')
+        $('#answerC').val('')
+        $('#answerD').val('')
+        $('#answer').val('')
+    }
+</script>
+</body>
+</html>
+</body>
+</html>
