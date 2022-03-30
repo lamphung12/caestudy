@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="dangnhap.css">
+</head>
+<body>
+<div class="container">
+    <div class="form_login">
+        <h1>Login</h1>
+        <div class="form_text">
+            <label>Username</label>
+            <input id="ad" type="text">
+        </div>
+        <div class="form_text">
+            <label>Password</label>
+            <input id="ac" type="text">
+        </div>
+        <div class="form_end">
+            <button onclick="login()">Login</button>
+            <button onclick="register()">Register</button>
+        </div>
+    </div>
+</div>
+<script>
+    const formLogin = document.querySelectorAll('.form_text input');
+    const formLabel = document.querySelectorAll('.form_text label');
+    for (let i = 0; i < 2; i++) {
+        formLogin[i].addEventListener("mouseover", function () {
+            formLabel[i].classList.add("focus")
+        })
+        formLogin[i].addEventListener("mouseout", function () {
+            if (formLogin[i].value == "") {
+                formLabel[i].classList.remove("focus")
+            }
+        })
+    }
+
+
+</script>
+<script>
+    class Account {
+        Username;
+        Password;
+
+        constructor(u, p) {
+            this.Username = u;
+            this.Password = p;
+        }
+    }
+
+    let acc1 = new Account("na", "1");
+    let acc2 = new Account("na2", "2");
+    let arr = [acc1, acc2]
+
+
+    let phong = document.getElementById('ad');
+    let hoang = document.getElementById('ac');
+
+
+    function login() {
+
+        arr = JSON.parse(localStorage.getItem("listAcc"))
+        let u = phong.value;
+        let p = hoang.value;
+
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].Username == u && arr[i].Password == p) {
+                window.location = "quanlysanpham.html"
+            }
+        }
+    }
+
+    function register() {
+        let u = phong.value;
+        let p = hoang.value;
+        let acc = new Account(u, p);
+        arr.push(acc);
+        localStorage.setItem("listAcc", JSON.stringify(arr));
+        return alert("dang ky thanh cong")
+    }
+
+
+</script>
+</body>
+</html>
